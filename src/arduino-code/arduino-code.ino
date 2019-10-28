@@ -71,5 +71,67 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
+  hum = dht.readHumidity(); // Read humidity from sensor and store in variable.
+  temp= dht.readTemperature(); // Read temperature from sensor and store in variable.
+  mosiureValue = analogRead(MOISURESEN); // Read moisure value from sensor and store in variable
+  rainDropValue = analogRead(RAINDROP); // Read rain drop value from sensor and store in variable
+  
+  // Display Humidity
+  display.clearDisplay();
+  display.setTextSize(2);
+  display.setTextColor(SSD1306_WHITE);
+  display.setCursor(17,3);
+  display.print("Humidity");
+  display.setTextSize(3);
+  display.setCursor(20,25);
+  display.print(hum);
+  display.display();
+  delay(1000);
 
+  // Display Temperature
+  display.clearDisplay();
+  display.setTextSize(2);
+  display.setTextColor(SSD1306_WHITE);
+  display.setCursor(20,3);
+  display.print("Thermal");
+  display.setTextSize(3);
+  display.setCursor(20,25);
+  display.print(temp);
+  display.display();
+  delay(1000);
+
+  // Display Moisure value
+  display.clearDisplay();
+  display.setTextSize(2);
+  display.setTextColor(SSD1306_WHITE);
+  display.setCursor(20,3);
+  display.print("Moisure");
+  display.setTextSize(3);
+  display.setCursor(20,25);
+  display.print(mosiureValue);
+  display.display();
+  delay(1000);
+
+  // Display Rain drop
+  display.clearDisplay();
+  display.setTextSize(2);
+  display.setTextColor(SSD1306_WHITE);
+  display.setCursor(23,3);
+  display.print("Rain");
+  display.setTextSize(3);
+  display.setCursor(20,25);
+  display.print(rainDropValue);
+  display.display();
+  delay(1000);
+  
+  Serial.print("Humidity: ");
+  Serial.print(hum);
+  Serial.print(" %, Temp: ");
+  Serial.print(temp);
+  Serial.print(" Celsius");
+  Serial.print(", Moisure value: ");
+  Serial.print(mosiureValue);
+  Serial.print(", Rain drop value: ");
+  Serial.println(rainDropValue);
+  delay(1000);
 }
